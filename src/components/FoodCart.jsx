@@ -10,6 +10,7 @@ function FoodCart() {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [showCart, setShowCart] = useState(false);
+  const [showItems, setShowItems] = useState(true);
 
   const addItemToCart = (item) => {
     setCart([...cart, item]);
@@ -36,39 +37,67 @@ function FoodCart() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-8">
-          <ul className="list-group mb-4">
-            {items.map((item) => (
-              <li key={item.id} className="list-group-item d-flex justify-content-between align-items-center">
-                {item.name} - ${item.price}{' '}
-                <button className="btn btn-primary" onClick={() => addItemToCart(item)}>Add to Cart</button>
-              </li>
-            ))}
-          </ul>
+        <div className="col-md-12">
+          {showItems && (
+            <div>
+              <ul className="list-group mb-4">
+                {items.map((item) => (
+                  <li
+                    key={item.id}
+                    className="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    {item.name} - ${item.price}{' '}
+                    <button className="btn btn-primary" onClick={() => addItemToCart(item)}>
+                      Add to Cart
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+           <button className="btn btn-primary mb-3" onClick={() => setShowCart(true)}>
+                Show Cart
+              </button>
         </div>
-        </div>
-        <div className="col-md-4">
+      </div>
+      <div className="row">
+        <div className="col-md-12">
           {showCart && (
             <div className="card mb-4">
               <div className="card-header">Cart</div>
               <ul className="list-group list-group-flush">
                 {cart.map((item) => (
-                  <li key={item.id} className="list-group-item d-flex justify-content-between align-items-center">
+                  <li
+                    key={item.id}
+                    className="list-group-item d-flex justify-content-between align-items-center"
+                  >
                     {item.name} - ${item.price}
-                    <button className="btn btn-danger" onClick={() => removeItemFromCart(item)}>Remove</button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => removeItemFromCart(item)}
+                    >
+                      Remove
+                    </button>
                   </li>
                 ))}
               </ul>
               <div className="card-footer">
                 <p className="h4 mb-0">Total: ${total}</p>
               </div>
-              <div className="col-md-8"></div>
-          <div className="col-md-4">
-            <button className="btn btn-success" onClick={handleSubmit}>Submit Order</button>
-          </div>
-        </div>
-            
+              <div className="card-body d-flex justify-content-between">
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => setShowCart(false)}
+                >
+                  Close
+                </button>
+                <button className="btn btn-success" onClick={handleSubmit}>
+                  Submit Order
+                </button>
+              </div>
+            </div>
           )}
+        </div>
       </div>
     </div>
   );

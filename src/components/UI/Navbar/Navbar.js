@@ -18,7 +18,7 @@ const NavBar = (props) => {
       <span className={classes.Main}>Hotel Name</span>
       <div className={classes.Links} style={linksStyle}>
         <span>Home</span>
-        <span>Link A</span>
+        <span >Link A</span>
         <span>Link B</span>
       </div>
       {props.children}

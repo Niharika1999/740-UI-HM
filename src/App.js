@@ -8,9 +8,8 @@ import RoomsInfo from './components/RoomsInfo';
 import MyCard1 from './RoomBookCard';
 import SignUp from './components/SignUp';
 import RoomsGrid from './components/RoomsGrid';
-import CardDeck from './CardDeck';
 import FoodGrid from './components/FoodGrid';
-
+import CardDeck from './components/CardDeck';
 function App() {
   return (
     <Router>

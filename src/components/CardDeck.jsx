@@ -1,6 +1,6 @@
 import React from 'react';
-import RoomsInfo from './components/RoomsInfo';
-import MyCard1 from './RoomBookCard';
+import RoomsInfo from './RoomsInfo';
+import MyCard1 from '../RoomBookCard';
 import { Button } from 'react-bootstrap';
 
 

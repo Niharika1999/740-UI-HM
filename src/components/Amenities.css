@@ -1,0 +1,25 @@
+.amenity-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.amenity-container:hover {
+  transform: translateY(-10px);
+}
+
+.amenity-icon {
+  color: #333;
+  font-size: 36px;
+  margin-bottom: 8px;
+  transition: color 0.3s ease-in-out, font-size 0.3s ease-in-out;
+}
+
+.amenity-icon:hover {
+  color: #00bcd4;
+  font-size: 40px;
+}
+

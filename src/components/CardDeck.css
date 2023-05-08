@@ -1,0 +1,11 @@
+.card-deck-container {
+  marginTop: 70px;
+  backgroundColor: #f5f5f5;
+  minHeight: 100vh;
+}
+
+.card-custom {
+  backgroundColor: transparent;
+  color: black;
+  border: none;
+}

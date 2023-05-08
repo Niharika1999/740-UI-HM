@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import NavBar from "./UI/Navbar/Navbar";
 
-export default function SignUp() {
+export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -40,7 +39,7 @@ export default function SignUp() {
         }}
         onSubmit={handleSubmit}
       >
-        <h2 style={{ marginBottom: "2rem" }}>Sign Up</h2>
+        <h2 style={{ marginBottom: "2rem" }}>Sign In</h2>
         <label htmlFor="email" style={{ marginBottom: "1rem" }}>
           Email:
         </label>
@@ -66,12 +65,6 @@ export default function SignUp() {
         <button type="submit" style={{ padding: "0.5rem 1rem" }}>
           Submit
         </button>
-        <p style={{ marginTop: "1rem" }}>
-          Already a Customer?{" "}
-          <Link to="/SignIn" style={{ color: "blue" }}>
-            Login Here
-          </Link>
-        </p>
       </form>
     </div>
   );

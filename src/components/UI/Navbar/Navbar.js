@@ -1,36 +1,39 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-// CSS
-import classes from './Navbar.module.css'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { NavDropdown } from 'react-bootstrap';
 
-const NavBar = (props) => {
-  const navbarStyle = {
-    color: '#fff', // set text color to white
-    borderBottom: '1px solid #fff' // add a white border at the bottom of the navbar
-  }
-
-  const linksStyle = {
-    borderBottom: '#fff' // add a white border at the bottom of the links
-  }
-
+const NavBar = () => {
   return (
-    <nav className={classes.Container} style={navbarStyle}>
-      <span className={classes.Main}>Hotel Name</span>
-      <div className={classes.Links} style={linksStyle}>
-        <span>Home</span>
-        <span >Link A</span>
-        <span>Link B</span>
+    <nav className="navbar navbar-expand-lg navbar-light  fixed-top">
+      <div className="container-fluid">
+        <NavLink className="navbar-brand" exact to="/">Hotel Name</NavLink>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <NavLink className="nav-link" exact to="/">Home</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/Food">Food</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/Rooms">Room</NavLink>
+            </li>
+            <NavDropdown title="Signup/SignIn" id="basic-nav-dropdown">
+                <li className="dropdown-item">
+                  <NavLink to="/SignUp" className="nav-link">Sign Up</NavLink>
+                </li>
+                <li className="dropdown-item">
+                  <NavLink to="/SignIn" className="nav-link">Sign In</NavLink>
+                </li>
+              </NavDropdown>
+          </ul>
+        </div>
       </div>
-      {props.children}
     </nav>
-  )
-}
+  );
+};
 
-NavBar.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ])
-}
-
-export default NavBar
+export default NavBar;

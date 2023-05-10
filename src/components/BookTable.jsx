@@ -6,10 +6,38 @@ function BookTable() {
   const [phone, setPhone] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
+  const [numGuests, setNumGuests] = useState(0);
+
+  const currentDate = new Date().toISOString().split('T')[0]; // Get the current date in the format yyyy-mm-dd
+  const minTime = '11:00';
+  const maxTime = '21:00';
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Do something with the user's reservation data, such as sending it to a server
+
+    // Check for empty fields
+    if (!name || !email || !phone || !date || !time || !numGuests) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    // Validate date and time
+    const selectedDate = new Date(date + 'T' + time);
+    if (selectedDate < new Date()) {
+      alert('Please select a date and time in the future.');
+      return;
+    }
+
+    // Validate number of guests
+    if (numGuests < 1) {
+      alert('Number of guests must be at least 1.');
+      return;
+    }
+
+    // Proceed with submitting the form
+    const reservationData = { name, email, phone, date, time, numGuests };
+    // Do something with the reservationData, such as sending it to a server
+    alert('Form submitted successfully!');
   };
 
   return (
@@ -29,11 +57,15 @@ function BookTable() {
         </div>
         <div className="form-group">
           <label htmlFor="date">Date:</label>
-          <input type="date" id="date" className="form-control" value={date} onChange={(event) => setDate(event.target.value)} />
+          <input type="date" id="date" className="form-control" value={date} onChange={(event) => setDate(event.target.value)} min={currentDate} />
         </div>
         <div className="form-group">
           <label htmlFor="time">Time:</label>
           <input type="time" id="time" className="form-control" value={time} onChange={(event) => setTime(event.target.value)} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="numGuests">Number of Guests:</label>
+          <input type="number" id="numGuests" className="form-control" value={numGuests} onChange={(event) => setNumGuests(event.target.value)} />
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>

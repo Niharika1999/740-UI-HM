@@ -9,6 +9,7 @@ import BookTable from './BookTable';
 import FoodCart from './FoodCart';
 import NavBar from './UI/Navbar/Navbar';
 import {Overlay } from "hero-slider";
+import Menu from './MenuCart';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -30,11 +31,17 @@ export default function FoodGrid() {
         <Grid item xs={3}>
           <BookTable/>
         </Grid>
-        <Grid item xs ={4}>
-          <FoodCart/>
-        </Grid>
+        
       </Grid>
+      <Grid container spacing={3}>
+        <Grid item xs ={6}>
+        <Menu/>
+        </Grid>
+        
+      </Grid>
+      
     </Box>
+   
   );
 }
 

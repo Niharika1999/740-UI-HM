@@ -10,6 +10,7 @@ import FoodCart from './FoodCart';
 import NavBar from './UI/Navbar/Navbar';
 import {Overlay } from "hero-slider";
 import Menu from './MenuCart';
+import Background from 'hero-slider/dist/components/Slide/Background';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -22,25 +23,21 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function FoodGrid() {
   return (
     <Box sx={{ flexGrow: 1, paddingTop: '70px' }}>
-      <NavBar/>
-      <br/>
-      <Grid container spacing={3}>
-        <Grid item xs="auto">
-          <FoodInfo/>
-        </Grid>
-        <Grid item xs={3}>
-          <BookTable/>
-        </Grid>
-        
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs = "auto">
-        <Menu/>
-        </Grid>
-        
-      </Grid>
-      
-    </Box>
+  <NavBar />
+  <Grid container spacing={3} justifyContent="center" style={{ minHeight: '100vh' }}>
+    <Grid item xs="auto">
+      <FoodInfo />
+    </Grid>
+    <Grid item xs={3}>
+      <BookTable />
+    </Grid>
+    <Grid item xs={8}>
+      <Menu />
+    </Grid>
+  </Grid>
+</Box>
+
+
    
   );
 }

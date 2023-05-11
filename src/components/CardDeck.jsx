@@ -28,14 +28,14 @@ function CardDeck() {
             </div>
           </div>
         </div>
-        <div className="col-sm-7 d-flex flex-column">
+        <div className="col-sm-7 d-flex flex-column " style={{ backgroundColor: 'transparent' }}>
           <div className="card mb-3 card-custom">
             <div className="card-body">
               <RoomBook onSubmit={handleFormSubmit} />
             </div>
           </div>
           <div className="card flex-grow-1 card-custom">
-            <div className="card-body">
+            <div className="card-body" style={{ backgroundColor: 'transparent' }}>
               <h5 className="card-title">Availability</h5>
               {availability ? (
                 <p className="card-text">{availability}</p>

@@ -82,9 +82,9 @@ const Menu = () => {
   return (
     <div className="container">
       <div className="row justify-content-center">
-      <div className="" style={{ backgroundColor: '#f5f5f5', padding: '1rem' }}>
+      <div className="col-md-8" style={{ paddingRight: '1rem', textAlign: 'center' }}>
           <h2 className="text-center mt-4 mb-3">Hotel Menu</h2>
-          <div >
+          <div>
             <select className="form-select" onChange={(e) => handleCategoryChange(e.target.value)}>
               <option value="">All</option>
               <option value="category1">Category 1</option>
@@ -92,56 +92,57 @@ const Menu = () => {
               {/* Add more options for each food category */}
             </select>
           </div>
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">
-                  <TableSortLabel>Item</TableSortLabel>
-                </th>
-                <th scope="col">
-                  <TableSortLabel>Description</TableSortLabel>
-                </th>
-                <th scope="col">
-                  <TableSortLabel>Calories</TableSortLabel>
-                </th>
-                <th scope="col">
-                  <TableSortLabel>Price</TableSortLabel>
-                </th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredItems.map((item) => (
-                <tr key={item.menu_item_id}>
-                  <td>{item.item_name}</td>
-                  <td>{item.item_description}</td>
-                  <td>{item.calories}</td>
-                  <td>{item.price}</td>
-                  <td>
-                    <button className="btn btn-primary" onClick={() => handleAddToCart(item.menu_item_id)}>
-                      Add to Cart
-                    </button>
-                  </td>
+          <div style={{ height: 400, width: '100%', overflowY: 'auto' }}>
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <TableSortLabel>Item</TableSortLabel>
+                  </th>
+                  <th scope="col">
+                    <TableSortLabel>Description</TableSortLabel>
+                  </th>
+                  <th scope="col">
+                    <TableSortLabel>Calories</TableSortLabel>
+                  </th>
+                  <th scope="col">
+                    <TableSortLabel>Price</TableSortLabel>
+                  </th>
+                  <th scope="col">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredItems.map((item) => (
+                  <tr key={item.menu_item_id}>
+                    <td>{item.item_name}</td>
+                    <td>{item.item_description}</td>
+                    <td>{item.calories}</td>
+                    <td>{item.price}</td>
+                    <td>
+                      <button className="btn btn-primary" onClick={() => handleAddToCart(item.menu_item_id)}>
+                        Add to Cart
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div className="col-md-3" style={{ border: '1px solid #ddd', padding: '1rem' }}>
-          <Cart
-            cartItems={cartItems}
-            removeFromCart={handleRemoveFromCart}
-            updateQuantity={handleUpdateQuantity}
-            totalAmount={totalAmount}
-            onCheckout={handleCheckout}
-          />
-        </div>
+        {cartItems.length > 0 && ( // Show the cart only when `cartItems` is not empty
+          <div className="col-md-4" style={{ padding: '1rem', textAlign: 'center' }}>
+            <Cart
+              cartItems={cartItems}
+              removeFromCart={handleRemoveFromCart}
+              updateQuantity={handleUpdateQuantity}
+              totalAmount={totalAmount}
+              onCheckout={handleCheckout}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
-  
-  
-  
 };
 
 export default Menu;

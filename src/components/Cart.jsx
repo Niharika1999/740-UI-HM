@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal } from 'react-bootstrap';
+import { Modal, Table, Button } from 'react-bootstrap';
 
 const Cart = ({ cartItems, removeFromCart, updateQuantity, onCheckout }) => {
   const [totalAmount, setTotalAmount] = useState(0);
@@ -14,6 +14,11 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity, onCheckout }) => {
     setTotalAmount(amount);
   };
 
+  const handleQuantityChange = (itemId, quantity) => {
+    updateQuantity(itemId, quantity);
+    calculateTotalAmount();
+  };
+
   const handleCheckout = () => {
     setShowModal(true);
     onCheckout();
@@ -26,23 +31,38 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity, onCheckout }) => {
         <p>Your cart is empty.</p>
       ) : (
         <div>
-          {cartItems.map((item) => (
-            <div key={item.menu_item_id} className="mb-3">
-              <h4>{item.item_name}</h4>
-              <p>Price: {item.price}</p>
-              <p>Quantity: {item.quantity}</p>
-              <button className="btn btn-danger" onClick={() => removeFromCart(item.menu_item_id)}>Remove</button>
-              <input
-                type="number"
-                className="form-control"
-                min="1"
-                value={item.quantity}
-                onChange={(e) => updateQuantity(item.menu_item_id, parseInt(e.target.value))}
-              />
-            </div>
-          ))}
+          <Table striped bordered>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cartItems.map((item) => (
+                <tr key={item.menu_item_id}>
+                  <td>{item.item_name}</td>
+                  <td>{item.price * item.quantity}</td>
+                  <td>
+                    <input
+                      type="number"
+                      className="form-control"
+                      min="1"
+                      value={item.quantity}
+                      onChange={(e) => handleQuantityChange(item.menu_item_id, parseInt(e.target.value))}
+                    />
+                  </td>
+                  <td>
+                    <Button variant="danger" onClick={() => removeFromCart(item.menu_item_id)}>Remove</Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
           <p className="fw-bold">Total Amount: {totalAmount}</p>
-          <button className="btn btn-primary" onClick={handleCheckout}>Checkout</button>
+          <Button variant="primary" onClick={handleCheckout}>Checkout</Button>
           <Modal show={showModal} onHide={() => setShowModal(false)}>
             <Modal.Header>
               <Modal.Title>Order Placed</Modal.Title>
@@ -51,7 +71,7 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity, onCheckout }) => {
               <p>Your order has been placed. Total amount: {totalAmount}</p>
             </Modal.Body>
             <Modal.Footer>
-              <button className="btn btn-secondary" onClick={() => setShowModal(false)}>Close</button>
+              <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
             </Modal.Footer>
           </Modal>
         </div>

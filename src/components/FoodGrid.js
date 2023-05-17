@@ -8,6 +8,7 @@ import FoodInfo from './FoodInfo';
 import BookTable from './BookTable';
 import FoodCart from './FoodCart';
 import NavBar from './UI/Navbar/Navbar';
+import NavBar2 from './UI/Navbar/Navbar2';
 import {Overlay } from "hero-slider";
 import Menu from './MenuCart';
 import Background from 'hero-slider/dist/components/Slide/Background';
@@ -23,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function FoodGrid() {
   return (
     <Box sx={{ flexGrow: 1, paddingTop: '70px' }}>
-  <NavBar />
+  <NavBar2 />
   <Grid container spacing={3} justifyContent="center" style={{ minHeight: '100vh' }}>
     <Grid item xs="auto">
       <FoodInfo />

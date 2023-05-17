@@ -10,6 +10,7 @@ import SignIn from './components/SignInForm';
 import BookingHistory from './components/BookingHistory';
 import ViewPrice from './components/ViewPrice';
 import ChartDisplay from './components/ChartDisplay';
+import Vehicle from './components/Vehicles';
 const App = () => {
   return (
     <div style={{
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/BookingHistory" element={<BookingHistory/>}/>
           <Route path="/viewprice" element={<ViewPrice />} />
           <Route path="/chart" element={<ChartDisplay />} />
+          <Route path="/Vehicle" element={<Vehicle />} />
         </Routes>
       </Router>
     </div>

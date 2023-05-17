@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./UI/Navbar/Navbar";
+import { Button, Box } from '@mui/material';
 import { useHistory } from "react-router-dom";
 
 export default function SignUp() {
@@ -78,9 +79,9 @@ export default function SignUp() {
           required
           style={{ marginBottom: "1rem" }}
         />
-        <button type="submit" style={{ padding: "0.5rem 1rem" }}>
-          Submit
-        </button>
+         <Link to="/BookingHistory">
+          <Button variant="contained" color="primary">Sign Up</Button>
+        </Link>
         <p style={{ marginTop: "1rem" }}>
           Already a Customer?{" "}
           <Link to="/SignIn" style={{ color: "blue" }}>

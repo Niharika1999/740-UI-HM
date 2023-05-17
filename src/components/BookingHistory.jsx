@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import UpdateRooms from './UpdateRooms';
 import UpdateFood from './UpdateFood';
+import UpdateVehicles from './UpdateVehicles';
 import NavBar2 from './UI/Navbar/Navbar2';
 import { Button, Box } from '@mui/material';
 
@@ -9,8 +10,7 @@ const BookingHistory = () => {
   return (
     <div>
       <NavBar2 />
-      <br />
-      <br />
+      <br /> <br />
       <br />
       <br />
       <UpdateRooms />
@@ -21,8 +21,13 @@ const BookingHistory = () => {
       <UpdateFood />
       <br />
       <br />
+      <br />
+      <br />
+      <UpdateVehicles />
+      <br />
+      <br />
       <div>
-      <Box display="flex" justifyContent="center" alignItems="center" sx={{ gap: '10px' }}>
+        <Box display="flex" justifyContent="center" alignItems="center" sx={{ gap: '10px' }}>
         <Link to="/viewprice">
           <Button variant="contained" color="primary">View Price</Button>
         </Link>

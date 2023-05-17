@@ -3,6 +3,7 @@ import RoomsInfo from './RoomsInfo';
 import RoomBook from '../RoomBookCard';
 import { Button } from 'react-bootstrap';
 import NavBar from './UI/Navbar/Navbar';
+import NavBar2 from './UI/Navbar/Navbar2';
 import Amenities from './Aminities';
 
 import './CardDeck.css'; // Import custom CSS file for CardDeck component
@@ -19,7 +20,7 @@ function CardDeck() {
 
   return (
     <div className="container-fluid card-deck-container " style={{ marginTop: "70px", minHeight: "100vh" }}>
-      <NavBar />
+      <NavBar2 />
       <div className="row justify-content-center">
         <div className="col-sm-5" style={{ borderRight: '1px solid gray', paddingLeft: '10px' }}>
           <div className="card h-100 mx-auto card-custom">

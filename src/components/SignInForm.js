@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavBar from "./UI/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import BookingHistory from "./BookingHistory";
+import { Button, Box } from '@mui/material';
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -31,6 +32,7 @@ export default function SignIn() {
           <Link to="/BookingHistory">Go to Home Page</Link>
         </p>
       </div>
+      
     );
   }
 
@@ -78,9 +80,9 @@ export default function SignIn() {
           required
           style={{ marginBottom: "1rem" }}
         />
-        <button type="submit" style={{ padding: "0.5rem 1rem" }}>
-          Submit
-        </button>
+        <Link to="/BookingHistory">
+          <Button variant="contained" color="primary">Sign In</Button>
+        </Link>
       </form>
     </div>
   );

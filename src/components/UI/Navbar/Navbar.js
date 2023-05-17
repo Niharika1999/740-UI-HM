@@ -15,12 +15,7 @@ const NavBar = () => {
             <li className="nav-item">
               <NavLink className="nav-link" exact to="/">Home</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/Food">Food</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/Rooms">Room</NavLink>
-            </li>
+            
             <NavDropdown title="Signup/SignIn" id="basic-nav-dropdown">
                 <li className="dropdown-item">
                   <NavLink to="/SignUp" className="nav-link">Sign Up</NavLink>

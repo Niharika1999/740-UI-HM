@@ -7,7 +7,7 @@ import FoodGrid from './components/FoodGrid';
 import CardDeck from './components/CardDeck';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignInForm';
-
+import BookingHistory from './components/BookingHistory';
 const App = () => {
   return (
     <div style={{
@@ -23,6 +23,7 @@ const App = () => {
           <Route path="/Rooms" element={<CardDeck />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/BookingHistory" element={<BookingHistory/>}/>
         </Routes>
       </Router>
     </div>

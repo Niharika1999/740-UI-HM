@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./UI/Navbar/Navbar";
+import { useHistory } from "react-router-dom";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -14,10 +16,23 @@ export default function SignUp() {
     setPassword(event.target.value);
   };
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(`Email: ${email}, Password: ${password}`);
+    setSubmitted(true);
   };
+
+  if (submitted) {
+    return (
+      <div>
+        <h2>Thank you for signing up!</h2>
+        <p>
+          <Link to="/">Go to Home Page</Link>
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div

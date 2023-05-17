@@ -46,7 +46,7 @@ function CardDeck() {
             </div>
           </div>
         </div>
-        <hr />
+        <hr />e
         <Amenities/>
       </div>
     </div>

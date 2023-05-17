@@ -20,6 +20,7 @@ function MyCard() {
   const [startDate, setStartDate] = React.useState(new Date());
   const [numberInput, setNumberInput] = React.useState(0);
   const [numNights, setNumNights] = React.useState(1);
+  const [mealPlan, setMealPlan] = React.useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,11 +29,11 @@ function MyCard() {
       console.log(`Selected date: ${startDate}`);
       console.log(`Number of guests: ${numberInput}`);
       console.log(`Number of nights: ${numNights}`);
+      console.log(`Meal plan: ${mealPlan ? 'Yes' : 'No'}`); //meal plan
     } else {
       alert("Please fill in all the required fields.");
     }
   };
-  
 
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.value);
@@ -46,15 +47,18 @@ function MyCard() {
       alert("Number of Guests must be at least 1.");
     }
   };
-  
 
   const handleNumNightsChange = (e) => {
     const value = e.target.value;
-  if (value >= 1) {
-    setNumNights(value);
-  } else {
-    alert("Number of Guests must be at least 1.");
-  }
+    if (value >= 1) {
+      setNumNights(value);
+    } else {
+      alert("Number of Nights must be at least 1.");
+    }
+  };
+
+  const handleMealPlanChange = (e) => { //meal plan
+    setMealPlan(e.target.value === 'Yes');
   };
 
   return (
@@ -81,15 +85,10 @@ function MyCard() {
         </Form.Group>
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Form.Group controlId="formDate" >
+        <Form.Group controlId="formDate">
           <Form.Label>Select a date:</Form.Label>
           <br />
-          <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          minDate={new Date()}
-/>
-
+          <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} minDate={new Date()} />
         </Form.Group>
       </Grid>
       <Grid item xs={4} sm={6}>
@@ -98,10 +97,35 @@ function MyCard() {
           <Form.Control type="number" value={numberInput} onChange={handleNumberChange} />
         </Form.Group>
       </Grid>
-      <Grid item xs={4} sm={6} >
+      <Grid item xs={4} sm={6}>
         <Form.Group controlId="formNumNights">
           <Form.Label>Number of Nights:</Form.Label>
           <Form.Control type="number" min={1} value={numNights} onChange={handleNumNightsChange} />
+        </Form.Group>
+      </Grid>
+      <Grid item xs={4} sm={6}> /
+        <Form.Group controlId="formMealPlan">
+          <Form.Label>Meal Plan:</Form.Label>
+          <div>
+            <Form.Check
+              inline
+              label="Yes"
+              type="radio"
+              name="mealPlan"
+              value="Yes"
+              checked={mealPlan}
+              onChange={handleMealPlanChange}
+            />
+            <Form.Check
+              inline
+              label="No"
+              type="radio"
+              name="mealPlan"
+              value="No"
+              checked={!mealPlan}
+              onChange={handleMealPlanChange}
+            />
+          </div>
         </Form.Group>
       </Grid>
       <Grid item xs={4} sm={6}>

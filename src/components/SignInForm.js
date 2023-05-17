@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import NavBar from "./UI/Navbar/Navbar";
+import { Link } from "react-router-dom";
+import BookingHistory from "./BookingHistory";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -16,7 +19,20 @@ export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(`Email: ${email}, Password: ${password}`);
+    setSubmitted(true);
   };
+
+
+  if (submitted) {
+    return (
+      <div>
+        <h2>Thank you for signing up!</h2>
+        <p>
+          <Link to="/BookingHistory">Go to Home Page</Link>
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div

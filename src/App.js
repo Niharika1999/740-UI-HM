@@ -8,6 +8,8 @@ import CardDeck from './components/CardDeck';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignInForm';
 import BookingHistory from './components/BookingHistory';
+import ViewPrice from './components/ViewPrice';
+import ChartDisplay from './components/ChartDisplay';
 const App = () => {
   return (
     <div style={{
@@ -24,6 +26,8 @@ const App = () => {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/BookingHistory" element={<BookingHistory/>}/>
+          <Route path="/viewprice" element={<ViewPrice />} />
+          <Route path="/chart" element={<ChartDisplay />} />
         </Routes>
       </Router>
     </div>
